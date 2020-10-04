@@ -21,12 +21,10 @@ public class ProductPage extends CommonPageActions {
 	static By expectedURLAfterClicked = By
 			.xpath("//img[contains(@class,'short-product-image')]/parent::div/parent::a[@href]");
 
-	
 	public static By getAddToBasket() {
 		return addToBasket;
 	}
-	
-	
+
 	public static void clickRandomProductAndCheckExpectedURL() {
 
 		Random r = new Random();
@@ -49,6 +47,5 @@ public class ProductPage extends CommonPageActions {
 
 		verifyCurrentURL(expectedURL);
 	}
-	
-	
+
 }

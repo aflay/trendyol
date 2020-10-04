@@ -81,6 +81,5 @@ public class HomePage extends CommonPageActions {
 		}
 
 	}
-	
-	
+
 }
