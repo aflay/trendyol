@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 import java.util.Random;
 
+import org.junit.After;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,11 +16,17 @@ public class ProductPage extends CommonPageActions {
 		super(driver, driverType);
 	}
 
-	static By productImages = By.xpath("//img[contains(@class,'short-product-image')]");
-	public static By addToBasket = By.xpath("//button[contains(@class,'add-to-bs')]");
+	private static By productImages = By.xpath("//img[contains(@class,'short-product-image')]");
+	private static By addToBasket = By.xpath("//button[contains(@class,'add-to-bs')]");
 	static By expectedURLAfterClicked = By
 			.xpath("//img[contains(@class,'short-product-image')]/parent::div/parent::a[@href]");
 
+	
+	public static By getAddToBasket() {
+		return addToBasket;
+	}
+	
+	
 	public static void clickRandomProductAndCheckExpectedURL() {
 
 		Random r = new Random();
@@ -36,10 +43,12 @@ public class ProductPage extends CommonPageActions {
 				.getAttribute("href");
 
 		System.out.println("Expected URL after a product clicked: " + expectedURL);
-
+		staticWait(2);
 		clickElement(randomElement);
 		staticWait(2);
 
 		verifyCurrentURL(expectedURL);
 	}
+	
+	
 }

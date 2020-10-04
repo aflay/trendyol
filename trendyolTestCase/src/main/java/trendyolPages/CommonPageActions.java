@@ -34,6 +34,8 @@ public class CommonPageActions extends BrowserOptions {
 
 		}
 	}
+	
+	
 
 	public static void clickElement(By elementKey) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -109,5 +111,7 @@ public class CommonPageActions extends BrowserOptions {
 			}
 		}
 	}
+	
+	
 
 }

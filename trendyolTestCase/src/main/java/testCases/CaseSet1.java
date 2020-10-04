@@ -1,5 +1,6 @@
 package testCases;
 
+import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
@@ -7,7 +8,6 @@ import frameworkOptions.BrowserOptions;
 import trendyolPages.BoutiquesPage;
 import trendyolPages.CommonPageActions;
 import trendyolPages.HomePage;
-import trendyolPages.LoginPage;
 import trendyolPages.MyOrdersPage;
 import trendyolPages.ProductPage;
 import trendyolPages.TabbarBoutiques;
@@ -38,18 +38,24 @@ public class CaseSet1 {
 	        homePage.staticWait(3);
 	        homePage.clickElement(homePage.getAccountButton());
 	        
-	        homePage.seeElementInSeconds(20,MyOrdersPage.myOrdersButton );
+	        homePage.seeElementInSeconds(20,MyOrdersPage.getMyOrdersButton());
 	        homePage.verifyCurrentURL("https://www.trendyol.com/hesabim/siparislerim");
+	        homePage.cleanBasket();
 	        
 	        TabbarBoutiques.checkBoutiquePages(9);
 	        TabbarBoutiques.clickRandomTabbar(9);
 	        BoutiquesPage.clickRandomBoutiqueImage();
 	        ProductPage.clickRandomProductAndCheckExpectedURL();
-	        ProductPage.clickElement(ProductPage.addToBasket);
-	        
-	        
-	        //homePage.quitSession();
+	        ProductPage.clickElement(ProductPage.getAddToBasket());
+	        ProductPage.clickElement(homePage.getBasketIcon());
+	        ProductPage.seeElementInSeconds(20,homePage.getTrashIcon());
 	        
 	 }
+	
+	@After
+	public void quitDriver() {
+		
+		driver.quit();
+	}
 }
 		

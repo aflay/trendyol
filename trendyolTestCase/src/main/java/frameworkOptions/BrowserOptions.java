@@ -26,19 +26,16 @@ public class BrowserOptions {
 			System.setProperty("webdriver.gecko.driver", "src\\geckodriver.exe");
 			driver = new FirefoxDriver();
 		}
-
+		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-
 		return driver;
 	}
-
 	@After
-	public void quitSession() {
-		driver.close();
+	public void quitDriver() {
+		
 		driver.quit();
-
 	}
 
 }
